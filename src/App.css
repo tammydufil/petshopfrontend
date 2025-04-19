@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+th, td, td a {
+  vertical-align: middle !important;
+  text-align: center !important;
+
+}
+
+.productimgname {
+  display: block !important;
+}
+
+.form-group input[type=text], .form-group input[type=password] {
+  height: 1.8rem !important;
+}
+
+/* .dataTables_paginate .paginate_button.current {
+    background: red !important;
+} */
+.active-submenu-link {
+  color: orange !important;
+  font-weight: bold;
+}
+
+.submenu.open>a {
+  background-color: rgba(255, 165, 0, 0.1);
+  /* light orange background for open submenu */
+}
+
+/* Confirm Button Styling */
+.swal2-confirm {
+  background-color: #8e6a00;
+  /* bg-pink-300 */
+  color: white;
+  /* text-white */
+  padding: 0.5rem 1rem;
+  /* px-4 py-2 */
+  border-radius: 0.375rem;
+  /* rounded */
+  transition: background-color 0.3s ease;
+}
+
+.swal2-confirm:hover {
+  background-color: #f0b400;
+  /* hover:bg-pink-400 */
+}
+
+/* Deny Button Styling */
+.swal2-deny {
+  background-color: #6b7280;
+  /* bg-gray-500 for example */
+  color: white;
+  padding: 0.5rem 1rem;
+  /* px-4 py-2 */
+  border-radius: 0.375rem;
+  /* rounded */
+  transition: background-color 0.3s ease;
+}
+
+.swal2-deny:hover {
+  background-color: #4b5563;
+  /* hover:bg-gray-600 */
+}
+
+.swal2-cancel {
+  background-color: #e5e7eb;
+  /* bg-gray-200 */
+  color: #1f2937;
+  /* text-gray-800 */
+  padding: 0.5rem 1rem;
+  /* px-4 py-2 */
+  border-radius: 0.375rem;
+  /* rounded */
+  transition: background-color 0.3s ease;
+}
+
+.swal2-cancel:hover {
+  background-color: #d1d5db;
+}
+
+/* .mynavul a {
+  color: #333 !important;
+  transition: all 0.2s ease !important;
+}
+
+
+
+.mynavul a::after {
+  color: #FFC0CB !important;
+  border-color: #FFC0CB !important;
+}  */
+
+.page-wrapper .content {
+  background-color: #ffc0cb0d !important;
+}
+
+.box-info-modern-link, .box-info-modern-link:focus, .box-info-modern-link:active {
+  color: #b45309 !important;
+}
+
+.box-info-modern-link:hover {
+  color: #381901 !important;
+}
+
+.customfont {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.menufont {
+  font-family: "Caveat", cursive !important;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lg-close, .lg-icon {
+  display: none !important;
+
+}
+
+.swal2-popup, .swal2-modal, .rounded-xl, .p-6, .swal2-show {
+  font-family: Inter, sans-serif !important;
+}
+
+.swal2-container {
+  z-index: 99999 !important;
+}
+
+/* Add this to your CSS file */
+.spinner {
+  width: 3rem !important;
+  height: 3rem !important;
+  border: 4px solid #fbbf24 !important;
+  /* Tailwind yellow-800 */
+  border-top: 4px solid #f59e0b !important;
+  /* Tailwind yellow-600 */
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.table-cart-stepper .stepper-arrow.up, .table-cart-stepper .stepper-arrow.down {
+  display: none !important;
+}
