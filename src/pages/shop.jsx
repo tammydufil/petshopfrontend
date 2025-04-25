@@ -194,7 +194,7 @@ export const Shop = () => {
             </select>
             <div>
               <label className="text-sm font-semibold text-gray-700 block mb-2">
-                Price Range (₦{priceRange[0].toLocaleString()} - ₦
+                Price Range (${priceRange[0].toLocaleString()} - $
                 {priceRange[1].toLocaleString()})
               </label>
               <div className="flex flex-col gap-4">

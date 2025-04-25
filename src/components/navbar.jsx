@@ -12,7 +12,7 @@ export const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
   const userContext = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(user);
+  // console.log(user);
 
   const navigate = useNavigate();
 

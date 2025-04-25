@@ -51,7 +51,7 @@ const OrdersPage = () => {
               item.name || item.title || "Unnamed Item"
             }</td>
             <td style="padding: 6px 12px;">${item.quantity}</td>
-            <td style="padding: 6px 12px;">₦${Number(
+            <td style="padding: 6px 12px;">$${Number(
               item.price
             ).toLocaleString()}</td>
           </tr>
@@ -125,7 +125,7 @@ const OrdersPage = () => {
                     <th className="px-4 py-3 text-left">Order ID</th>
                     <th className="px-4 py-3 text-left">Name</th>
                     <th className="px-4 py-3 text-left">Address</th>
-                    <th className="px-4 py-3 text-left">Amount (₦)</th>
+                    <th className="px-4 py-3 text-left">Amount ($)</th>
                     <th className="px-4 py-3 text-left">Payment</th>
                     <th className="px-4 py-3 text-left">Delivery</th>
                     <th className="px-4 py-3 text-left">Date</th>

@@ -8,7 +8,7 @@ import { UserContext } from "../context/UserContext";
 import axios from "axios";
 
 export default function ProfilePage() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, cart } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [stats, setStats] = useState({
@@ -39,19 +39,21 @@ export default function ProfilePage() {
     const fetchStats = async () => {
       try {
         const token = user?.token;
-        const userid = user?.user?._id;
 
-        const response = await axios.get(`/user/${userid}/stats`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log("User stats response:", response.data);
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/user/${user?.user?.userid}/stats`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // console.log(response);
 
         setStats({
           ordersPlaced: response.data.totalOrders,
           pendingDeliveries: response.data.pendingDeliveries,
-          itemsInCart: 0,
         });
       } catch (error) {
         console.error(
@@ -61,7 +63,7 @@ export default function ProfilePage() {
       }
     };
 
-    if (user?.user?._id) {
+    if (user) {
       fetchStats();
     }
   }, [user]);
@@ -121,7 +123,7 @@ export default function ProfilePage() {
             </div>
             <div className="bg-white rounded-xl shadow p-4 text-center">
               <p className="text-3xl font-bold text-green-600">
-                {stats.itemsInCart}
+                {cart?.length}
               </p>
               <p className="text-sm text-gray-500 mt-1">Items in Cart</p>
             </div>

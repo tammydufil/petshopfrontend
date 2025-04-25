@@ -80,7 +80,7 @@ const StripePaymentForm = ({
         className="btn btn-primary"
         style={{ width: "100%" }}
       >
-        Pay ₦{amountPaid.toLocaleString()}
+        Pay ${amountPaid.toLocaleString()}
       </button>
     </form>
   );
