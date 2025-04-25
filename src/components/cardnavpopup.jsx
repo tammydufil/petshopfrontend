@@ -50,7 +50,7 @@ export const CartnavPopup = () => {
               In cart: <span>{cart.length}</span> Products
             </h5>
             <h6 className="cart-inline-title">
-              Total price: <span>₦ {totalPrice.toLocaleString()}</span>
+              Total price: <span>$ {totalPrice.toLocaleString()}</span>
             </h6>
           </div>
           <div className="cart-inline-body">
@@ -102,7 +102,7 @@ export const CartnavPopup = () => {
                           </div>
                         </div>
                         <h6 className="cart-inline-title">
-                          ₦ {Number(item.price).toLocaleString()}
+                          ${Number(item.price).toLocaleString()}
                         </h6>
                       </div>
                     </div>
@@ -111,8 +111,8 @@ export const CartnavPopup = () => {
               </div>
             ))}
           </div>
-          <div className="cart-inline-footer">
-            <div className="group-sm">
+          <div className="p-8">
+            <div className="group-sm flex">
               <a
                 className="button button-primary-outline button-zakaria"
                 href="cartpage"

@@ -31,7 +31,7 @@ export const Products = () => {
         }
       );
 
-    //   console.log(res);
+      //   console.log(res);
 
       setProducts(res.data || []);
     } catch (err) {
@@ -292,7 +292,7 @@ export const Products = () => {
                   </button>
                 </td>
                 <td className="border px-2 py-1">
-                  ₦ {Number(product?.price)?.toLocaleString()}
+                  ${Number(product?.price)?.toLocaleString()}
                 </td>
                 <td className="border px-2 py-1">{product.category}</td>
                 <td className="border px-2 py-1">{product.available}</td>

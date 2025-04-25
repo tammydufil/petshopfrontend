@@ -173,9 +173,9 @@ export const Checkout = () => {
                         <img src={item.image} alt={item.name} width={80} />
                         <span className="ml-2">{item.name}</span>
                       </td>
-                      <td>₦ {item.price.toLocaleString()}</td>
+                      <td>${item.price.toLocaleString()}</td>
                       <td>{item.quantity}</td>
-                      <td>₦ {(item.price * item.quantity).toLocaleString()}</td>
+                      <td>${(item.price * item.quantity).toLocaleString()}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -193,7 +193,7 @@ export const Checkout = () => {
                   <tbody>
                     <tr>
                       <td>Subtotal:</td>
-                      <td>₦ {amountPaid.toLocaleString()}</td>
+                      <td>${amountPaid.toLocaleString()}</td>
                     </tr>
                     <tr>
                       <td>Shipping:</td>
@@ -201,7 +201,7 @@ export const Checkout = () => {
                     </tr>
                     <tr>
                       <td>Total:</td>
-                      <td>₦ {amountPaid.toLocaleString()}</td>
+                      <td>${amountPaid.toLocaleString()}</td>
                     </tr>
                   </tbody>
                 </table>

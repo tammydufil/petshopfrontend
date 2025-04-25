@@ -76,7 +76,7 @@ export const Home = () => {
                   >
                     <a
                       className="button !border-0 !bg-black !text-white hover"
-                      href="shop-list.html.htm"
+                      href="#abt"
                     >
                       Read more
                     </a>
@@ -104,7 +104,7 @@ export const Home = () => {
                   className="box-info-modern wow slideInUp"
                   data-wow-delay=".1s"
                 >
-                  <a className="box-info-modern-figure link-img" href="#">
+                  <a className="box-info-modern-figure link-img" href="/shop">
                     <img
                       src="/assets/pimages/about-1-370x276.jpg"
                       alt="Pet Clothing"
@@ -119,13 +119,13 @@ export const Home = () => {
                     Comfortable and stylish outfits for every kind of pet
                     personality.
                   </p>
-                  <a className="box-info-modern-link" href="#">
+                  <a className="box-info-modern-link" href="/shop">
                     Visit Store
                   </a>
                 </article>
 
                 <article className="box-info-modern wow slideInUp">
-                  <a className="box-info-modern-figure link-img" href="#">
+                  <a className="box-info-modern-figure link-img" href="/shop">
                     <img
                       src="/assets/pimages/about-2-370x276.jpg"
                       alt="Grooming Supplies"
@@ -134,13 +134,13 @@ export const Home = () => {
                     />
                   </a>
                   <h4 className="box-info-modern-title">
-                    <a href="#">Grooming Supplies</a>
+                    <a href="/shop">Grooming Supplies</a>
                   </h4>
                   <p>
                     Top-quality tools and products to keep your pets clean and
                     healthy.
                   </p>
-                  <a className="box-info-modern-link" href="#">
+                  <a className="box-info-modern-link" href="/shop">
                     Visit Store
                   </a>
                 </article>
@@ -149,7 +149,7 @@ export const Home = () => {
                   className="box-info-modern wow slideInUp"
                   data-wow-delay=".1s"
                 >
-                  <a className="box-info-modern-figure link-img" href="#">
+                  <a className="box-info-modern-figure link-img" href="/shop">
                     <img
                       src="/assets/pimages/about-3-370x276.jpg"
                       alt="Pet Food"
@@ -158,14 +158,14 @@ export const Home = () => {
                     />
                   </a>
                   <h4 className="box-info-modern-title">
-                    <a href="#">Pet Food</a>
+                    <a href="/shop">Pet Food</a>
                   </h4>
                   <p>
                     Nourishing meals and treats made with pets’ health in mind.
                   </p>
                   <a
                     className="box-info-modern-link text-yellow-700 hover:!text-yellow-500 transition-all"
-                    href="#"
+                    href="/shop"
                   >
                     Visit Store
                   </a>
@@ -300,7 +300,7 @@ export const Home = () => {
             </div>
           </section>
           {/* About Us*/}
-          <section className="section section-xl bg-default">
+          <section className="section section-xl bg-default" id="abt">
             <div className="container">
               <h2 className="wow fadeScale menufont">About us</h2>
               <div className="row row-30 row-lg justify-content-center">
@@ -415,7 +415,7 @@ export const Home = () => {
               </h4>
               <a
                 className="button button-lg button-primary wow fadeInUp btn-one"
-                href="shop-list.html.htm"
+                href="/shop"
               >
                 Visit Store
               </a>

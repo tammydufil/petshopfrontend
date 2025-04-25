@@ -19,7 +19,7 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    <article className="product">
+    <article className="product ">
       <div className="product-body">
         <div className="product-figure">
           <img
@@ -32,12 +32,12 @@ const ProductCard = ({ product, onAddToCart }) => {
         <h5 className="product-title">{product.name}</h5>
         <div className="product-price-wrap">
           <div className="product-price">
-            ₦ {Number(product.price)?.toLocaleString()}
+            $ {Number(product.price)?.toLocaleString()}
           </div>
         </div>
       </div>
 
-      <div className="product-quantity-wrap flex justify-center items-center gap-3 my-2">
+      <div className="product-quantity-wrap flex justify-center items-center gap-3 mb-8 my-4">
         <button className="quantity-btn" onClick={() => updateQuantity(-1)}>
           -
         </button>
@@ -47,17 +47,17 @@ const ProductCard = ({ product, onAddToCart }) => {
         </button>
       </div>
 
-      <div className="product-button-wrap flex justify-center gap-3">
+      <div className="product-button-wrap flex justify-center gap-3 mb-8">
         <div className="product-button">
           <button
-            className="button button-secondary button-zakaria fl-bigmug-line-search74"
+            className="button button-secondary button-zakaria fl-bigmug-line-search74 "
             onClick={handleViewProduct}
             title="View Product"
           ></button>
         </div>
         <div className="product-button">
           <button
-            className="button button-secondary button-zakaria fl-bigmug-line-shopping202"
+            className="button button-secondary button-zakaria fl-bigmug-line-shopping202 "
             onClick={handleAddToCart}
             title="Add to Cart"
           ></button>

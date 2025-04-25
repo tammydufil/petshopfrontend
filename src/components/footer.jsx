@@ -150,7 +150,7 @@ export const Footer = () => {
                         <a href="#">
                           2 John doe
                           <br />
-                          Lorem ipsum dolor sit amet.
+                          Lagos nigeria
                         </a>
                       </div>
                     </div>
@@ -171,7 +171,7 @@ export const Footer = () => {
                         <span className="icon mdi mdi-email-outline linear-icon" />
                       </div>
                       <div className="unit-body">
-                        <a href="mailto:#">info@demolink.org</a>
+                        <a href="mailto:#">info@Luvthypet.org</a>
                       </div>
                     </div>
                   </li>

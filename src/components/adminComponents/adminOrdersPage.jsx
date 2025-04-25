@@ -179,7 +179,7 @@ const AdminOrdersPage = () => {
                 <td className="px-4 py-2 border">{item.name}</td>
                 <td className="px-4 py-2 border">{item.quantity}</td>
                 <td className="px-4 py-2 border">
-                  ₦ {Number(item.price).toLocaleString()}
+                  ${Number(item.price).toLocaleString()}
                 </td>
               </tr>
             ))}
@@ -237,7 +237,7 @@ const AdminOrdersPage = () => {
 
       <div className="mb-4">
         <p className="font-semibold">
-          Total Amount: ₦ {Number(totalAmount).toLocaleString()}
+          Total Amount: ${Number(totalAmount).toLocaleString()}
         </p>
       </div>
 
@@ -270,7 +270,7 @@ const AdminOrdersPage = () => {
                       {order.firstname} {order.lastname}
                     </td>
                     <td className="p-2 border">
-                      ₦ {Number(order.amount_paid).toLocaleString()}
+                      ${Number(order.amount_paid).toLocaleString()}
                     </td>
                     <td className="p-2 border uppercase">
                       {order.deliverystatus}

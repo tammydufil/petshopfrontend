@@ -4,10 +4,13 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { UserContext } from "../context/UserContext";
 import Swal from "sweetalert2";
+import { useSearchParams, useLocation } from "react-router-dom";
 
 export const Shop = () => {
   const { user } = useContext(UserContext);
   const { cart, setCart } = useContext(UserContext);
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
@@ -20,6 +23,7 @@ export const Shop = () => {
   const [loading, setLoading] = useState(false);
   const productsPerPage = 5;
 
+  // Handle adding products to cart
   const handleAddToCart = (product, quantity) => {
     const existingCart = [...cart];
     const index = existingCart.findIndex((item) => item.id === product.id);
@@ -40,24 +44,26 @@ export const Shop = () => {
     });
   };
 
+  // Initial data fetch
   useEffect(() => {
-    const savedSearch = localStorage.getItem("selectedProductName");
-    if (savedSearch) {
-      setSearch(savedSearch);
+    // Get search term from URL params (from navbar search)
+    const searchFromParams = searchParams.get("search") || "";
+
+    // Get saved product name (from product card clicks)
+    const savedProductName = localStorage.getItem("selectedProductName");
+
+    // Set search term based on available sources
+    if (searchFromParams) {
+      setSearch(searchFromParams);
+    } else if (savedProductName) {
+      setSearch(savedProductName);
       localStorage.removeItem("selectedProductName");
     }
-    fetchData();
-  }, []);
 
-  useEffect(() => {
-    const savedSearch = localStorage.getItem("selectedProductName");
-    if (savedSearch) {
-      setSearch(savedSearch);
-      localStorage.removeItem("selectedProductName");
-    }
     fetchData();
-  }, []);
+  }, [searchParams]);
 
+  // Fetch products and categories data
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -86,6 +92,12 @@ export const Shop = () => {
     }
   };
 
+  // Reset to page 1 when search criteria change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, selectedCategory, priceRange]);
+
+  // Filter products based on search, category and price range
   const filteredProducts = allProducts.filter((product) => {
     const nameMatch = product.name.toLowerCase().includes(search.toLowerCase());
     const categoryMatch = product.category
@@ -99,6 +111,7 @@ export const Shop = () => {
     return (nameMatch || categoryMatch) && inCategory && inPriceRange;
   });
 
+  // Pagination calculations
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const startIndex = (currentPage - 1) * productsPerPage;
   const paginatedProducts = filteredProducts.slice(
@@ -146,6 +159,18 @@ export const Shop = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 py-10">
+        {/* Display search results information if searching */}
+        {search && (
+          <div className="mb-6 text-center">
+            <h3 className="text-xl font-medium">
+              Search Results for "{search}"
+            </h3>
+            <p className="text-gray-600 mt-1">
+              {filteredProducts.length} product(s) found
+            </p>
+          </div>
+        )}
+
         <div className="flex flex-column md:!flex-row gap-8">
           <div className="md:w-[30%] space-y-6 p-6 sideee md:sticky md:top-24 h-fit">
             <input
@@ -226,7 +251,7 @@ export const Shop = () => {
                           </h4>
                           <div className="product-price-wrap">
                             <div className="product-price !text-yellow-900 !my-1">
-                              ₦ {Number(product.price).toLocaleString()}
+                              ${Number(product.price).toLocaleString()}
                             </div>
                           </div>
                           <p className="product-modern-text">

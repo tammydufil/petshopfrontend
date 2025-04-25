@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 
-th, td, td a {
+th,
+td,
+td a {
   vertical-align: middle !important;
   text-align: center !important;
-
 }
 
 .productimgname {
   display: block !important;
 }
 
-.form-group input[type=text], .form-group input[type=password] {
+.form-group input[type="text"],
+.form-group input[type="password"] {
   height: 1.8rem !important;
 }
 
@@ -20,18 +22,18 @@ th, td, td a {
     background: red !important;
 } */
 .active-submenu-link {
-  color: orange !important;
+  color: #ed6335 !important;
   font-weight: bold;
 }
 
-.submenu.open>a {
-  background-color: rgba(255, 165, 0, 0.1);
+.submenu.open > a {
+  background-color: #ed6335;
   /* light orange background for open submenu */
 }
 
 /* Confirm Button Styling */
 .swal2-confirm {
-  background-color: #8e6a00;
+  background-color: #ed6335;
   /* bg-pink-300 */
   color: white;
   /* text-white */
@@ -43,7 +45,7 @@ th, td, td a {
 }
 
 .swal2-confirm:hover {
-  background-color: #f0b400;
+  background-color: #ed6335;
   /* hover:bg-pink-400 */
 }
 
@@ -96,7 +98,9 @@ th, td, td a {
   background-color: #ffc0cb0d !important;
 }
 
-.box-info-modern-link, .box-info-modern-link:focus, .box-info-modern-link:active {
+.box-info-modern-link,
+.box-info-modern-link:focus,
+.box-info-modern-link:active {
   color: #b45309 !important;
 }
 
@@ -118,12 +122,16 @@ th, td, td a {
   font-style: normal;
 }
 
-.lg-close, .lg-icon {
+.lg-close,
+.lg-icon {
   display: none !important;
-
 }
 
-.swal2-popup, .swal2-modal, .rounded-xl, .p-6, .swal2-show {
+.swal2-popup,
+.swal2-modal,
+.rounded-xl,
+.p-6,
+.swal2-show {
   font-family: Inter, sans-serif !important;
 }
 
@@ -153,6 +161,10 @@ th, td, td a {
   }
 }
 
-.table-cart-stepper .stepper-arrow.up, .table-cart-stepper .stepper-arrow.down {
+.table-cart-stepper .stepper-arrow.up,
+.table-cart-stepper .stepper-arrow.down {
   display: none !important;
+}
+html {
+  scroll-behavior: smooth;
 }

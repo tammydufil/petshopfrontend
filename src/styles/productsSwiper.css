@@ -1,0 +1,49 @@
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px; /* Fully rounded */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+  cursor: pointer;
+  padding: 1px;
+}
+
+/* Hide default Swiper arrows */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Custom arrow icons, centered inside button */
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.swiper-button-prev::before {
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #1a1a1a transparent transparent;
+}
+
+.swiper-button-next::before {
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #1a1a1a;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}

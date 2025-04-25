@@ -3,13 +3,19 @@ import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import ProductCard from "../components/productCard";
 import Swal from "sweetalert2";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../styles/productsSwiper.css";
 
 const ProductsListHome = () => {
   const { user, cart, setCart } = useContext(UserContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchProducts = async () => {
       try {
         const res = await axios.get(
           `${import.meta.env.VITE_API_URL}/getAllProducts`,
@@ -19,14 +25,13 @@ const ProductsListHome = () => {
             },
           }
         );
-
         setProducts(res.data.slice(0, 6) || []);
       } catch (err) {
         console.error("Failed to fetch products", err);
       }
     };
 
-    fetch();
+    fetchProducts();
   }, [user?.token]);
 
   const handleAddToCart = (product, quantity) => {
@@ -51,20 +56,32 @@ const ProductsListHome = () => {
   };
 
   return (
-    <div
-      className="owl-carousel owl-style-9"
-      data-items={products.length > 1 ? products.length : 1}
-      data-sm-items={2}
-      data-md-items={3}
-      data-lg-items={4}
-      data-margin={30}
-      data-dots="true"
-    >
-      {products.map((product) => (
-        <div key={product.id}>
-          <ProductCard product={product} onAddToCart={handleAddToCart} />
-        </div>
-      ))}
+    <div className="p-4 relative">
+      {" "}
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        pagination={{ clickable: true }}
+      >
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} onAddToCart={handleAddToCart} />
+          </SwiperSlide>
+        ))}
+
+        <div className="swiper-button-prev !text-gray-800 !opacity-100"></div>
+        <div className="swiper-button-next !text-gray-800 !opacity-100"></div>
+      </Swiper>
     </div>
   );
 };

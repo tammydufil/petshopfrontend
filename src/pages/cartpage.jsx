@@ -141,7 +141,7 @@ export const CartPage = () => {
                             {item.name}
                           </a>
                         </td>
-                        <td>₦ {Number(item.price).toLocaleString()}</td>
+                        <td>$ {Number(item.price).toLocaleString()}</td>
                         <td>
                           <div className="table-cart-stepper flex items-center">
                             <button
@@ -165,7 +165,7 @@ export const CartPage = () => {
                           </div>
                         </td>
                         <td>
-                          ₦ {(item.quantity * item.price).toLocaleString()}
+                          $ {(item.quantity * item.price).toLocaleString()}
                         </td>
                         <td>
                           <button
@@ -187,7 +187,7 @@ export const CartPage = () => {
                 <div className="group-md group-middle">
                   <div className="heading-5 fw-medium text-gray-500">Total</div>
                   <div className="heading-3 fw-normal">
-                    ₦ {totalPrice.toLocaleString()}
+                    $ {totalPrice.toLocaleString()}
                   </div>
                 </div>
                 <a

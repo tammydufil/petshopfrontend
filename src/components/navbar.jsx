@@ -11,7 +11,7 @@ const MySwal = withReactContent(Swal);
 export const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
   const userContext = useContext(UserContext);
-
+  const [searchTerm, setSearchTerm] = useState("");
   console.log(user);
 
   const navigate = useNavigate();
@@ -273,6 +273,18 @@ export const Navbar = () => {
     });
   };
 
+  // Handle search form submission
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (searchTerm.trim()) {
+      // Store search term in localStorage for components to access
+      localStorage.setItem("productSearchTerm", searchTerm);
+
+      // Navigate to shop page with search parameter
+      navigate(`/shop?search=${encodeURIComponent(searchTerm)}`);
+    }
+  };
   return (
     <header className="section page-header">
       {/* RD Navbar*/}
@@ -312,9 +324,9 @@ export const Navbar = () => {
                     </div>
                     <div className="unit-body !text-[black] hover:!text-[black]">
                       <p className="!font-semibold hover:!font-semibold">
-                        66646 John Doe
+                        66646 Lagos, Nigeria
                         <br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing
+                        Lagoon drive Street, Suite 101
                       </p>
                     </div>
                   </div>
@@ -441,7 +453,6 @@ export const Navbar = () => {
                       >
                         Account
                       </a>
-                      {/* RD Navbar Dropdown*/}
                       {!user && (
                         <>
                           <ul className="rd-menu !py-0 !pb-6 rd-navbar-dropdown">
@@ -486,25 +497,23 @@ export const Navbar = () => {
                   >
                     <span />
                   </button>
-                  <form
-                    className="rd-search"
-                    action="search-results.html"
-                    data-search-live="rd-search-results-live"
-                    method="GET"
-                  >
+                  <form className="rd-search" onSubmit={handleSearch}>
                     <div className="form-wrap">
-                      <label
-                        className="form-label"
-                        htmlFor="rd-navbar-search-form-input"
-                      >
-                        Search...
-                      </label>
+                      {/* <label
+                      className="form-label"
+                      htmlFor="rd-navbar-search-form-input"
+                    >
+                      Search...
+                    </label> */}
                       <input
                         className="rd-navbar-search-form-input form-input"
                         id="rd-navbar-search-form-input"
                         type="text"
                         name="s"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         autoComplete="off"
+                        placeholder="Search products..."
                       />
                       <div
                         className="rd-search-results-live"
