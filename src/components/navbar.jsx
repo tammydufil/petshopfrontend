@@ -324,9 +324,8 @@ export const Navbar = () => {
                     </div>
                     <div className="unit-body !text-[black] hover:!text-[black]">
                       <p className="!font-semibold hover:!font-semibold">
-                        66646 Lagos, Nigeria
-                        <br />
-                        Lagoon drive Street, Suite 101
+                        9169 W State St Garden City <br />
+                        ID 83714 Suite 1258{" "}
                       </p>
                     </div>
                   </div>

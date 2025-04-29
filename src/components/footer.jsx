@@ -148,9 +148,8 @@ export const Footer = () => {
                       </div>
                       <div className="unit-body">
                         <a href="#">
-                          2 John doe
-                          <br />
-                          Lagos nigeria
+                          9169 W State St Garden City <br />
+                          ID 83714 Suite 1258{" "}
                         </a>
                       </div>
                     </div>
@@ -171,7 +170,7 @@ export const Footer = () => {
                         <span className="icon mdi mdi-email-outline linear-icon" />
                       </div>
                       <div className="unit-body">
-                        <a href="mailto:#">info@Luvthypet.org</a>
+                        <a href="mailto:#">contact@luvthypet.shop</a>
                       </div>
                     </div>
                   </li>
