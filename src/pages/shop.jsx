@@ -5,6 +5,7 @@ import { Footer } from "../components/footer";
 import { UserContext } from "../context/UserContext";
 import Swal from "sweetalert2";
 import { useSearchParams, useLocation } from "react-router-dom";
+import { CategoryDropdown } from "../components/categorydropdown";
 
 export const Shop = () => {
   const { user } = useContext(UserContext);
@@ -15,13 +16,16 @@ export const Shop = () => {
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [maxPriceLimit, setMaxPriceLimit] = useState(100000);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const productsPerPage = 5;
+  const [open, setOpen] = useState(false);
 
   // Handle adding products to cart
   const handleAddToCart = (product, quantity) => {
@@ -97,19 +101,35 @@ export const Shop = () => {
     setCurrentPage(1);
   }, [search, selectedCategory, priceRange]);
 
-  // Filter products based on search, category and price range
-  const filteredProducts = allProducts.filter((product) => {
-    const nameMatch = product.name.toLowerCase().includes(search.toLowerCase());
-    const categoryMatch = product.category
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    const inCategory = selectedCategory
-      ? product.category === selectedCategory
-      : true;
-    const inPriceRange =
-      product.price >= priceRange[0] && product.price <= priceRange[1];
-    return (nameMatch || categoryMatch) && inCategory && inPriceRange;
-  });
+  function handleFilter() {
+    console.log(selectedCategory);
+
+    let filtered = allProducts.filter((product) => {
+      const nameMatch = product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const categoryMatch = product.category
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchesSearch = search ? nameMatch || categoryMatch : true;
+
+      const matchesCategory = selectedCategory
+        ? product.category.toLowerCase() === selectedCategory.toLowerCase()
+        : true;
+
+      const matchesPrice =
+        product.price >= priceRange[0] && product.price <= priceRange[1];
+
+      return matchesSearch && matchesCategory && matchesPrice;
+    });
+
+    setFilteredProducts(filtered);
+  }
+
+  useEffect(() => {
+    handleFilter();
+  }, [allProducts, search, selectedCategory]);
 
   // Pagination calculations
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -119,6 +139,7 @@ export const Shop = () => {
     startIndex + productsPerPage
   );
 
+  // console.log(paginatedProducts);
   const handlePriceSlider = (e, index) => {
     const newRange = [...priceRange];
     newRange[index] = Number(e.target.value);
@@ -130,7 +151,12 @@ export const Shop = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div
+      className="bg-white min-h-screen"
+      onClick={() => {
+        setOpen(false);
+      }}
+    >
       <Navbar />
 
       <section className="breadcrumbs-custom">
@@ -180,18 +206,15 @@ export const Shop = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            >
-              <option value="">All Categories</option>
-              {categories.map((cat, i) => (
-                <option key={i} value={cat.name}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
+
+            <CategoryDropdown
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              setSearch={setSearch}
+              open={open}
+              setOpen={setOpen}
+            />
             <div>
               <label className="text-sm font-semibold text-gray-700 block mb-2">
                 Price Range (${priceRange[0].toLocaleString()} - $
@@ -257,7 +280,7 @@ export const Shop = () => {
                           <p className="product-modern-text">
                             {product.description}
                           </p>
-                          {product.available && (
+                          {product.available === "available" && (
                             <div className="mt-4 flex flex-wrap justify-center items-center gap-2">
                               <button
                                 onClick={() => handleAddToCart(product, 1)}
@@ -272,7 +295,9 @@ export const Shop = () => {
                     </div>
                     <span className="product-badge product-badge-sale">
                       <p className="text-sm font-semibold text-white">
-                        {product.available ? "Available" : "Out of Stock"}
+                        {product.available === "available"
+                          ? "Available"
+                          : "Out of Stock"}
                       </p>
                     </span>
                   </article>
