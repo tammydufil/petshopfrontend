@@ -1,5 +1,7 @@
 "use strict";
 (function () {
+  // console.log("running");
+
   let userAgent = navigator.userAgent.toLowerCase(),
     isIE =
       userAgent.indexOf("msie") !== -1
@@ -33,11 +35,6 @@
     windowReady = false,
     isNoviBuilder = false;
 
-  /**
-   * @desc Check the element was been scrolled into the view
-   * @param {object} elem - jQuery object
-   * @return {boolean}
-   */
   function isScrolledIntoView(elem) {
     if (isNoviBuilder) return true;
     return (
@@ -46,11 +43,6 @@
     );
   }
 
-  /**
-   * @desc Calls a function when element has been scrolled into the view
-   * @param {object} element - jQuery object
-   * @param {function} func - init function
-   */
   function lazyInit(element, func) {
     var scrollHandler = function () {
       if (!element.hasClass("lazy-loaded") && isScrolledIntoView(element)) {
@@ -64,7 +56,9 @@
   }
 
   // Initialize scripts that require a loaded page
-  $window.on("load", function () {
+  function runOnload() {
+    // console.log("Got here");
+
     // Page loader & Page transitionzz
 
     let plugins = {
@@ -110,7 +104,8 @@
       progressCircle: document.querySelectorAll(".progress-circle"),
     };
 
-    console.log(plugins);
+    // alert("loaded");
+    // console.log(plugins);
 
     if (plugins.preloader.length && !isNoviBuilder) {
       pageTransition({
@@ -2256,7 +2251,9 @@
         multitoggles();
       }
     });
-  });
+  }
+
+  runOnload();
 
   // Initialize scripts that require a finished document
 })();

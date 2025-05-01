@@ -4,44 +4,14 @@ import { Footer } from "../components/footer";
 import ProductsListHome from "./productListHome";
 
 export const Home = () => {
-  useEffect(() => {
-    // Wait for DOM to mount
-    const preloader = $(".preloader");
 
-    console.log(preloader);
-
-    if (preloader.length > 0) {
-      preloader.addClass("loaded"); // Or your custom animation logic
-    }
-  }, []);
   return (
     <div>
       <div>
         <title>Home</title>
-
-        <div className="preloader">
-          <div className="preloader-body">
-            <div className="cssload-bell">
-              <div className="cssload-circle">
-                <div className="cssload-inner" />
-              </div>
-              <div className="cssload-circle">
-                <div className="cssload-inner" />
-              </div>
-              <div className="cssload-circle">
-                <div className="cssload-inner" />
-              </div>
-              <div className="cssload-circle">
-                <div className="cssload-inner" />
-              </div>
-              <div className="cssload-circle">
-                <div className="cssload-inner" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="page">
+        <div className="">
           {/* Page Header*/}
+
           <Navbar></Navbar>
           {/* Main screen*/}
           <section

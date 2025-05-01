@@ -48,6 +48,40 @@ function App() {
       }
     }
   }, []);
+  useEffect(() => {
+    // console.log("useEffect triggered");
+
+    const timeout = setTimeout(() => {
+      // console.log("Timeout triggered, adding core.min.js script");
+
+      const coreScript = document.createElement("script");
+      coreScript.src = "/assets/pjs/core.min.js";
+      coreScript.onload = () => {
+        const script = document.createElement("script");
+        script.src = "/assets/pjs/script.js";
+        script.onload = () => {
+          if (window.jQuery) {
+            $(document).ready(function () {
+              // console.log("DOM is ready, jQuery initialized");
+            });
+          } else {
+            // console.error("jQuery not loaded properly.");
+          }
+        };
+
+        document.body.appendChild(script);
+      };
+
+      document.body.appendChild(coreScript);
+
+      // alert("Ran after 2 seconds!");
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+      // console.log("Cleanup: Timeout cleared");
+    };
+  }, []);
 
   useEffect(() => {
     setUserLoading(true);

@@ -351,7 +351,7 @@ export const Navbar = () => {
                 <div className="">
                   <a className="" href="/">
                     <img
-                      className="w-[50px] md:w-[120px] md:-mb-[40px]"
+                      className="w-[50px] lg:w-[120px] md:-mb-[40px]"
                       src="/assets/img/petlogo.png"
                       alt=""
                       width={168}
