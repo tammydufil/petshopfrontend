@@ -129,6 +129,33 @@ export const Shop = () => {
 
   useEffect(() => {
     handleFilter();
+  }, [allProducts, search, selectedCategory, priceRange]);
+
+  function handleFilter() {
+    let filtered = allProducts.filter((product) => {
+      const nameMatch = product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const categoryMatch = product.category
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchesSearch = search ? nameMatch || categoryMatch : true;
+
+      const matchesCategory = selectedCategory
+        ? product.category.toLowerCase() === selectedCategory.toLowerCase()
+        : true;
+
+      const matchesPrice =
+        product.price >= priceRange[0] && product.price <= priceRange[1];
+
+      return matchesSearch && matchesCategory && matchesPrice;
+    });
+
+    setFilteredProducts(filtered);
+  }
+  useEffect(() => {
+    handleFilter();
   }, [allProducts, search, selectedCategory]);
 
   // Pagination calculations
